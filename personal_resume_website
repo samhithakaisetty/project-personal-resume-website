@@ -1,0 +1,876 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Samhitha - Personal Resume</title>
+ 
+<style>
+ 
+/* colours i picked */
+:root {
+  --bg-main: #F2EAE0;
+  --bg-section: #BDA6CE;
+  --accent: #9BE8EC;
+  --pink: #FE9EC7;
+  --text-dark: #091413;
+  --text-soft: #5e5e5e;
+  --white: #ffffff;
+  --card-bg: #fdf9f5;
+}
+ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+}
+ 
+/* navbar */
+nav {
+  background-color: var(--text-dark);
+  padding: 13px 28px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+ 
+nav a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 5px 13px;
+  border-radius: 20px;
+  transition: background 0.2s, color 0.2s;
+}
+ 
+nav a:hover {
+  background-color: var(--accent);
+  color: var(--text-dark);
+}
+ 
+/* header */
+header {
+  background-color: var(--pink);
+  color: var(--text-dark);
+  text-align: center;
+  padding: 55px 20px 48px;
+  position: relative;
+  overflow: hidden;
+}
+ 
+header::before {
+  content: '';
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  background: var(--bg-section);
+  opacity: 0.2;
+  border-radius: 50%;
+  top: -80px;
+  left: -80px;
+}
+ 
+header::after {
+  content: '';
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background: var(--accent);
+  opacity: 0.25;
+  border-radius: 50%;
+  bottom: -60px;
+  right: -40px;
+}
+ 
+.header-img {
+  width: 155px;
+  height: 155px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--text-dark);
+  display: block;
+  margin: 0 auto 20px auto;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 20px rgba(9,20,19,0.2);
+}
+ 
+header h1 {
+  font-size: 38px;
+  letter-spacing: 0.5px;
+  margin-bottom: 9px;
+  position: relative;
+  z-index: 1;
+  color: var(--text-dark);
+}
+ 
+header .tagline {
+  font-size: 16px;
+  color: var(--text-dark);
+  position: relative;
+  z-index: 1;
+  opacity: 0.75;
+  letter-spacing: 0.3px;
+}
+ 
+/* main layout */
+.container {
+  max-width: 880px;
+  margin: 36px auto;
+  padding: 0 18px;
+}
+ 
+/* section cards */
+section {
+  background-color: var(--card-bg);
+  margin-bottom: 28px;
+  padding: 28px 30px;
+  border-radius: 12px;
+  border-left: 5px solid var(--bg-section);
+  box-shadow: 0 2px 10px rgba(9,20,19,0.08);
+}
+ 
+section h2 {
+  font-size: 21px;
+  color: var(--text-dark);
+  margin-bottom: 22px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+ 
+/* about */
+.profile-text {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text-soft);
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+}
+ 
+/* education timeline */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+ 
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--bg-section), var(--accent));
+  border-radius: 2px;
+}
+ 
+.timeline-item {
+  position: relative;
+  margin-bottom: 18px;
+  padding: 16px 18px;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+}
+ 
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+ 
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -26px;
+  top: 18px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--bg-section);
+  border: 3px solid var(--card-bg);
+  box-shadow: 0 0 0 2px var(--bg-section);
+}
+ 
+.timeline-item h3 { font-size: 15px; color: var(--text-dark); margin-bottom: 5px; }
+.timeline-item .edu-place { font-size: 13px; color: var(--text-soft); }
+ 
+.timeline-item .edu-year {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  background-color: var(--accent);
+  color: var(--text-dark);
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+ 
+/* projects */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+ 
+.project-card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+ 
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 7px 18px rgba(0,0,0,0.13);
+}
+ 
+.project-card.c1 { background-color: #ede0f8; border-top: 4px solid #BDA6CE; }
+.project-card.c2 { background-color: #d7f4f5; border-top: 4px solid #9BE8EC; }
+.project-card.c3 { background-color: #fdefd8; border-top: 4px solid #e0b87c; }
+.project-card.c4 { background-color: #d8eaf8; border-top: 4px solid #7cb0e0; }
+ 
+.project-card h3 { font-size: 15px; margin-bottom: 8px; }
+.project-card p { font-size: 13px; color: var(--text-soft); line-height: 1.6; margin-bottom: 12px; }
+ 
+.tech-badge {
+  display: inline-block;
+  font-size: 11px;
+  background-color: rgba(9,20,19,0.09);
+  color: var(--text-dark);
+  padding: 3px 9px;
+  border-radius: 20px;
+  margin: 2px 2px 0 0;
+  font-weight: 700;
+}
+ 
+/* skills */
+.skills-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+ 
+.skill-group h4 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-soft);
+  margin-bottom: 10px;
+}
+ 
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+ 
+.skill-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background-color: var(--white);
+  border: 2px solid var(--bg-section);
+  border-radius: 8px;
+  padding: 7px 15px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+ 
+.skill-badge:hover {
+  background-color: var(--bg-section);
+  border-color: var(--text-dark);
+  transform: translateY(-2px);
+}
+ 
+.skill-badge .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.dot-web  { background-color: #BDA6CE; }
+.dot-prog { background-color: #9BE8EC; }
+.dot-tool { background-color: #e0b87c; }
+.dot-db   { background-color: #7cb0e0; }
+ 
+/* hobbies grid */
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 13px;
+}
+ 
+.hobby-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 22px 10px 18px;
+  text-align: center;
+  border: 2px solid transparent;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.07);
+  transition: transform 0.22s, border-color 0.22s, background 0.22s, box-shadow 0.22s;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+}
+ 
+/* shimmer animation on the cards */
+.hobby-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(254,158,199,0.18) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+  pointer-events: none;
+}
+ 
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+ 
+.hobby-card:hover {
+  transform: translateY(-7px) scale(1.05);
+  border-color: var(--pink);
+  background-color: #fff0f7;
+  box-shadow: 0 10px 24px rgba(254,158,199,0.35);
+}
+ 
+.hobby-card .hobby-icon { font-size: 34px; display: block; margin-bottom: 10px; }
+.hobby-card .hobby-label { font-size: 12px; color: var(--text-soft); font-weight: 700; line-height: 1.3; }
+ 
+.hobby-card .click-hint {
+  font-size: 10px;
+  color: var(--bg-section);
+  margin-top: 6px;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+ 
+.hobby-card:hover .click-hint { opacity: 1; }
+ 
+ 
+/* ---- hobby detail pages ---- */
+/* hidden by default, shown when the url matches the id */
+ 
+.hobby-page {
+  display: none;
+}
+ 
+/* this is the trick - when the url has #hobby-drawing etc.
+   the :target selector makes that element visible */
+.hobby-page:target {
+  display: block;
+  animation: fadeSlide 0.35s ease;
+}
+ 
+/* also hide the main content when a hobby page is open */
+#main-content:has(~ .hobby-page:target) {
+  display: none;
+}
+ 
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+ 
+/* back button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 28px 0 20px 0;
+  padding: 9px 20px;
+  background-color: var(--text-dark);
+  color: var(--accent);
+  border: none;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+ 
+.back-btn:hover {
+  background-color: var(--pink);
+  color: var(--text-dark);
+  transform: translateX(-3px);
+}
+ 
+/* hobby page hero */
+.hobby-hero {
+  border-radius: 14px;
+  padding: 38px 32px;
+  margin-bottom: 26px;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+ 
+.hobby-hero .hero-icon { font-size: 62px; flex-shrink: 0; }
+.hobby-hero h1 { font-size: 30px; margin-bottom: 6px; }
+.hobby-hero p { font-size: 15px; line-height: 1.7; opacity: 0.8; max-width: 560px; }
+ 
+.hobby-desc-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 26px;
+  border-left: 5px solid var(--pink);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+ 
+.hobby-desc-card h2 { font-size: 18px; margin-bottom: 12px; color: var(--text-dark); }
+ 
+.hobby-desc-card p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--text-soft);
+  margin-bottom: 10px;
+}
+ 
+.hobby-desc-card p:last-child { margin-bottom: 0; }
+ 
+.gallery-heading {
+  font-size: 18px;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+ 
+.img-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 36px;
+}
+ 
+.img-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.22s, box-shadow 0.22s;
+  background: var(--white);
+}
+ 
+.img-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.16);
+}
+ 
+.img-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+ 
+.img-card .img-caption {
+  padding: 10px 12px;
+  font-size: 12px;
+  color: var(--text-soft);
+  font-weight: 600;
+}
+ 
+.hobby-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+ 
+.hobby-tag {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  background-color: var(--pink);
+  color: var(--text-dark);
+}
+ 
+/* footer */
+footer {
+  background-color: var(--text-dark);
+  color: #ccc;
+  text-align: center;
+  padding: 26px 20px;
+  font-size: 14px;
+}
+ 
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+footer .footer-note { margin-top: 8px; font-size: 12px; color: #555; }
+ 
+</style>
+</head>
+<body>
+ 
+<!-- navbar -->
+<nav>
+  <a href="#main-content">About</a>
+  <a href="#education">Education</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#hobbies">Hobbies</a>
+</nav>
+ 
+<!-- header -->
+<header>
+  <img
+    src="C:\Users\LENOVO\Downloads\sam.jpeg"
+    alt="Profile Photo of Samhitha"
+    class="header-img"
+  />
+  <h1>Samhitha Kaisetty Balaji</h1>
+  <p class="tagline">Student &nbsp;|&nbsp; Bangalore</p>
+</header>
+ 
+<!-- main resume page -->
+<div id="main-content">
+  <div class="container">
+ 
+    <!-- about -->
+    <section id="profile">
+      <h2>About Me</h2>
+      <p class="profile-text">
+        Hi, I'm Samhitha.
+        I'm 18 and a first-year engineering student at Dayananda Sagar College of Engineering in Bangalore. I've lived here all my life.
+        Right now I'm just figuring things out and learning as I go, especially in programming and tech. Outside of college, I like drawing, practicing Bharatanatyam, and watching movies. That's usually how I spend most of my time.
+      </p>
+    </section>
+ 
+    <!-- education -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="timeline">
+ 
+        <div class="timeline-item">
+          <h3>🎓 B.Tech — Computer Science &amp; Engineering</h3>
+          <p class="edu-place">Dayananda Sagar College of Engineering, Bangalore</p>
+          <span class="edu-year">2025 – 2029 (expected)</span>
+        </div>
+ 
+        <div class="timeline-item">
+          <h3>🏫 Class 12 — CBSE (Science)</h3>
+          <p class="edu-place">Sri Chaitanya Techno School, Bangalore &nbsp;·&nbsp; 89.8%</p>
+          <span class="edu-year">Graduated 2025</span>
+        </div>
+ 
+        <div class="timeline-item">
+          <h3>📖 Class 1 to 10</h3>
+          <p class="edu-place">Delhi Public School, Bangalore &nbsp;·&nbsp; CBSE &nbsp;·&nbsp; 92%</p>
+          <span class="edu-year">2013 – 2023</span>
+        </div>
+ 
+      </div>
+    </section>
+ 
+    <!-- projects -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+ 
+        <div class="project-card c1">
+          <h3>🎨 Color-Coded Echoing Machine</h3>
+          <p>A web app that echoes your text back in different colors based on mood/tone. Made it for a college assignment and honestly spent way too long on it. Each word gets a color from a custom palette.</p>
+          <span class="tech-badge">HTML</span>
+          <span class="tech-badge">CSS</span>
+          <span class="tech-badge">JavaScript</span>
+        </div>
+ 
+        <div class="project-card c2">
+          <h3>🌐 HTML / CSS Practice Pages</h3>
+          <p>A bunch of practice pages I built while learning — a product card, login form, pricing page, etc. Mostly just me trying things out and seeing what breaks.</p>
+          <span class="tech-badge">HTML</span>
+          <span class="tech-badge">CSS</span>
+        </div>
+ 
+        <div class="project-card c3">
+          <h3>🌦️ Weather Checking App</h3>
+          <p>Shows current weather when you type a city name. My first time using an API — took forever to understand fetch() but I got there eventually. Uses OpenWeatherMap API.</p>
+          <span class="tech-badge">JavaScript</span>
+          <span class="tech-badge">REST API</span>
+          <span class="tech-badge">HTML / CSS</span>
+        </div>
+ 
+        <div class="project-card c4">
+          <h3>📊 Student Grade Calculator</h3>
+          <p>A Python script that takes marks as input and calculates grade and percentage. Made for a lab assignment. I also added a check for marks above 100 since people kept testing with weird inputs.</p>
+          <span class="tech-badge">Python</span>
+        </div>
+ 
+      </div>
+    </section>
+ 
+    <!-- skills -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-wrapper">
+ 
+        <div class="skill-group">
+          <h4>🌐 Web</h4>
+          <div class="badges">
+            <span class="skill-badge"><span class="dot dot-web"></span>HTML</span>
+            <span class="skill-badge"><span class="dot dot-web"></span>CSS</span>
+          </div>
+        </div>
+ 
+        <div class="skill-group">
+          <h4>💻 Programming</h4>
+          <div class="badges">
+            <span class="skill-badge"><span class="dot dot-prog"></span>Python</span>
+            <span class="skill-badge"><span class="dot dot-prog"></span>C</span>
+          </div>
+        </div>
+ 
+        <div class="skill-group">
+          <h4>🛠️ Tools</h4>
+          <div class="badges">
+            <span class="skill-badge"><span class="dot dot-tool"></span>VS Code</span>
+          </div>
+        </div>
+ 
+        <div class="skill-group">
+          <h4>🗄️ Database</h4>
+          <div class="badges">
+            <span class="skill-badge"><span class="dot dot-db"></span>MySQL</span>
+          </div>
+        </div>
+ 
+      </div>
+    </section>
+ 
+    <!-- hobbies - clicking a card goes to its section using anchor links -->
+    <section id="hobbies">
+      <h2>Hobbies &amp; Interests</h2>
+      <div class="hobbies-grid">
+ 
+        <a href="#hobby-drawing" class="hobby-card">
+          <span class="hobby-icon">🎨</span>
+          <span class="hobby-label">Drawing</span>
+          <span class="click-hint">Click to explore →</span>
+        </a>
+ 
+        <a href="#hobby-chemistry" class="hobby-card">
+          <span class="hobby-icon">🧪</span>
+          <span class="hobby-label">Chemistry</span>
+          <span class="click-hint">Click to explore →</span>
+        </a>
+ 
+        <a href="#hobby-karate" class="hobby-card">
+          <span class="hobby-icon">🥋</span>
+          <span class="hobby-label">Karate</span>
+          <span class="click-hint">Click to explore →</span>
+        </a>
+ 
+        <a href="#hobby-movies" class="hobby-card">
+          <span class="hobby-icon">🎬</span>
+          <span class="hobby-label">Watching Movies</span>
+          <span class="click-hint">Click to explore →</span>
+        </a>
+ 
+      </div>
+    </section>
+ 
+  </div>
+</div>
+ 
+ 
+<!-- hobby pages - shown when url matches the id (css :target trick) -->
+ 
+<!-- drawing -->
+<div id="hobby-drawing" class="hobby-page">
+  <div class="container">
+    <a href="#hobbies" class="back-btn">← Back to Resume</a>
+ 
+    <div class="hobby-hero" style="background: linear-gradient(135deg, #ede0f8, #ffd6e8);">
+      <span class="hero-icon">🎨</span>
+      <div>
+        <h1>Drawing</h1>
+        <p>Sketchbooks, doodles in class margins, and occasionally an actual finished piece.</p>
+      </div>
+    </div>
+ 
+    <div class="hobby-desc-card">
+      <h2>My Drawing Journey</h2>
+      <p>I've been drawing since I was really young, started with copying cartoon characters from TV and slowly got into more detailed pencil sketches. I mostly do portraits and nature scenes, nothing super advanced but I really enjoy it.</p>
+      <p>During boring lectures I'm usually doodling in the margins of my notebook. My friends say my notes look like an art project. I consider that a compliment. I've been trying to get better at shading and perspective and it's harder than it looks!</p>
+      <p>I tried digital drawing for a bit using a free app on my phone. It's fun but I still prefer pencil and paper. There's no undo button but that's kind of the point.</p>
+      <div class="hobby-tags">
+        <span class="hobby-tag">Pencil Sketches</span>
+        <span class="hobby-tag">Portraits</span>
+        <span class="hobby-tag">Doodling</span>
+        <span class="hobby-tag">Nature Scenes</span>
+      </div>
+    </div>
+ 
+    <p class="gallery-heading">📸 Some of My Work</p>
+    <div class="img-gallery">
+      <div class="img-card">
+        <img src="C:\Users\LENOVO\Downloads\drawing3.jpeg" alt="Sketch 1"/>
+        <div class="img-caption">emo girl sketch</div>
+      </div>
+      <div class="img-card">
+        <img src="C:\Users\LENOVO\Downloads\drawing 2.jpeg" alt="Sketch 2"/>
+        <div class="img-caption">A page from my current sketchbook</div>
+      </div>
+      <div class="img-card">
+        <img src="C:\Users\LENOVO\Downloads\drawing4.jpeg" alt="Sketch 3"/>
+        <div class="img-caption">One of my favourite pencil portrait sketches</div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- chemistry -->
+<div id="hobby-chemistry" class="hobby-page">
+  <div class="container">
+    <a href="#hobbies" class="back-btn">← Back to Resume</a>
+ 
+    <div class="hobby-hero" style="background: linear-gradient(135deg, #d7f4f5, #ede0f8);">
+      <span class="hero-icon">🧪</span>
+      <div>
+        <h1>Chemistry</h1>
+        <p>Organic Chemistry mostly — reaction mechanisms, molecular structures, that kind of thing.</p>
+      </div>
+    </div>
+ 
+    <div class="hobby-desc-card">
+      <h2>Why I Like Organic Chemistry</h2>
+      <p>Most people groan at the mention of Organic Chemistry. I actually enjoy it. It's basically just logic — atoms follow rules and if you understand the rules, reactions start to make sense. That clicked for me in Class 11 and I got kind of obsessed.</p>
+      <p>I used to spend extra time in the school chemistry lab just to try experiments we hadn't been assigned. My teacher noticed and let me do some extra reading on reaction mechanisms. That's when I got properly into it.</p>
+      <p>Even now in college I read chemistry articles sometimes. Probably a weird thing to do for fun but here we are.</p>
+      <div class="hobby-tags">
+        <span class="hobby-tag">Organic Chemistry</span>
+        <span class="hobby-tag">Reaction Mechanisms</span>
+        <span class="hobby-tag">Biochemistry</span>
+        <span class="hobby-tag">Lab Work</span>
+      </div>
+    </div>
+ 
+    <p class="gallery-heading">📸 Chemistry Moments</p>
+    <div class="img-gallery">
+      <div class="img-card">
+        <img src="https://placehold.co/400x180/9BE8EC/091413?text=Lab+Session" alt="Lab"/>
+        <div class="img-caption">School chemistry lab — my favourite class period</div>
+      </div>
+      <div class="img-card">
+        <img src="https://placehold.co/400x180/BDA6CE/091413?text=Reaction+Notes" alt="Notes"/>
+        <div class="img-caption">My notes on SN1 and SN2 mechanisms — actually fun to study</div>
+      </div>
+      <div class="img-card">
+        <img src="https://placehold.co/400x180/FE9EC7/091413?text=Organic+Models" alt="Models"/>
+        <div class="img-caption">Molecular model kit — best study tool ever</div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- karate -->
+<div id="hobby-karate" class="hobby-page">
+  <div class="container">
+    <a href="#hobbies" class="back-btn">← Back to Resume</a>
+ 
+    <div class="hobby-hero" style="background: linear-gradient(135deg, #fdefd8, #d7f4f5);">
+      <span class="hero-icon">🥋</span>
+      <div>
+        <h1>Karate</h1>
+        <p>Did karate for most of middle school. Brown belt before board exams got in the way.</p>
+      </div>
+    </div>
+ 
+    <div class="hobby-desc-card">
+      <h2>My Karate Story</h2>
+      <p>I started karate in Class 3 — my parents enrolled me and honestly I wasn't thrilled at first. But after a few months I was completely hooked. I didn't expect to like it as much as I did.</p>
+      <p>I trained seriously through middle school and participated in a few district level competitions. I reached brown belt before things got busier with board exams and I had to slow down.</p>
+      <p>I'd like to get back to it in college when the schedule allows. Haven't found a good dojo nearby yet.</p>
+      <div class="hobby-tags">
+        <span class="hobby-tag">Brown Belt</span>
+        <span class="hobby-tag">Kata Practice</span>
+        <span class="hobby-tag">Inter-school Competitions</span>
+        <span class="hobby-tag">Shotokan Style</span>
+      </div>
+    </div>
+ 
+    <p class="gallery-heading">📸 On the Mat</p>
+    <div class="img-gallery">     
+      <div class="img-card">
+        <img src="C:\Users\LENOVO\Downloads\karate.jpeg" alt="belt ceremony"/>
+        <div class="img-caption">belt ceremony</div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- movies -->
+<div id="hobby-movies" class="hobby-page">
+  <div class="container">
+    <a href="#hobbies" class="back-btn">← Back to Resume</a>
+ 
+    <div class="hobby-hero" style="background: linear-gradient(135deg, #ffd6e8, #fdefd8);">
+      <span class="hero-icon">🎬</span>
+      <div>
+        <h1>Watching Movies</h1>
+        <p>I watch a lot of movies. Probably too many. No regrets.</p>
+      </div>
+    </div>
+ 
+    <div class="hobby-desc-card">
+      <h2>My Movie Taste</h2>
+      <p>I watch a lot of movies — probably too many. I love anything with a good story and interesting characters. My favourite genres are psychological thrillers, sci-fi, and slice-of-life films. I also enjoy well-made Indian cinema — both Bollywood and regional.</p>
+      <p>Big Nolan fan. Also really into Studio Ghibli — Spirited Away is probably my all-time favourite.</p>
+      <p>I try to watch at least one new film every week. Sometimes I write short reviews in my notes app just to remember what I thought about them</p>
+      <div class="hobby-tags">
+        <span class="hobby-tag">Sci-fi</span>
+        <span class="hobby-tag">Psychological Thriller</span>
+        <span class="hobby-tag">Studio Ghibli</span>
+        <span class="hobby-tag">Indian Cinema</span>
+        <span class="hobby-tag">Nolan Fan</span>
+      </div>
+    </div>
+ 
+    <p class="gallery-heading">📸 Movie Moments</p>
+    <div class="img-gallery">
+      <div class="img-card">
+        <img src="C:\Users\LENOVO\Downloads/rat.jpeg" alt="ratatouille"/>
+        <div class="img-caption">Childhood Fav</div>
+      </div>
+      <div class="img-card">
+        <img src="C:\Users\LENOVO\Downloads\mamma mia.jpeg" alt="mamma mia"/>
+        <div class="img-caption">In my top 5</div>
+      </div>
+      <div class="img-card">
+        <img src="C:\Users\LENOVO\Downloads\list.jpeg" alt="Watchlist"/>
+        <div class="img-caption">My watchlist is always longer than my free time </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- footer -->
+<footer>
+  <p>Made by Samhitha &nbsp;|&nbsp; Student, Bangalore</p>
+  <p style="margin-top:7px;">
+    📧 <a href="mailto:samhitha2024@example.com">samhitha2024@example.com</a>
+  </p>
+  <p class="footer-note">thank you</p>
+</footer>
+ 
+</body>
+</html>
+ 
